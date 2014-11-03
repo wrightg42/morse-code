@@ -27,8 +27,8 @@ namespace MoresCodeLibrary
         /// </summary>
         /// <param name="message"> The message. </param>
         /// <param name="isChars"> Whether the message is letters or in morse form. </param>
-        /// <param name="dotLength"> The length of one dot. </param>
-        public static void PlayMessage(string message, bool isChars = true, int dotLength = 100)
+        /// <param name="dotLength"> The length of one dot in milliseconds. </param>
+        public static void PlayMessage(string message, bool isChars = true, int dotLength = 90)
         {
             // Set the dotlength
             DotLength = dotLength;
@@ -177,6 +177,49 @@ namespace MoresCodeLibrary
         public static void WordGap()
         {
             Thread.Sleep(DotLength * 7);
+        }
+
+        /// <summary>
+        /// Checks if a message is valid and won't throw errors when being played.
+        /// </summary>
+        /// <param name="message"> The message to check. </param>
+        /// <param name="isMorseForm"> Whether the message is in morse form. </param>
+        /// <returns> Whether the message is valid. </returns>
+        public static bool ValidMessage(string message, bool isMorseForm = false)
+        {
+            // Make the message upper case
+            message = message.ToUpper();
+
+            if (isMorseForm)
+            {
+                // If the message is in morse form check each letter is valid
+                foreach (string word in message.Split(new char[] { '\\', '|', '/' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    foreach (string letter in word.Split(' '))
+                    {
+                        if (!ValidMorseFormLetter(letter))
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                // Otherwise check each character is is valid
+                foreach (string word in message.Split(' '))
+                {
+                    foreach (char c in word)
+                    {
+                        if (!MorseCharacters.MorseCharacterValues.ContainsKey(c))
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+
+            return true;
         }
 
         /// <summary>

@@ -1,5 +1,6 @@
 ﻿// Program.cs
 // <copyright file="Program.cs"> This code is protected under the MIT License. </copyright>
+using System;
 using MoresCodeLibrary;
 
 namespace MorseCode
@@ -8,7 +9,10 @@ namespace MorseCode
     {
         static void Main(string[] args)
         {
-            PlayMorse.PlayMessage("sos. Testing 123!");
+            if (PlayMorse.ValidMessage("sos. Testing 123!"))
+            {
+                PlayMorse.PlayMessage("sos. Testing 123!");
+            }
         }
     }
 }
