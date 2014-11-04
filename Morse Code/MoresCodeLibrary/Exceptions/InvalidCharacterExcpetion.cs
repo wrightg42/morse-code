@@ -5,7 +5,7 @@ using System;
 namespace MorseCodeLibrary.Exceptions
 {
     /// <summary>
-    /// An exception for invalid/unrecognised characters being used.
+    /// An exception for invalid/unrecognized characters being used.
     /// </summary>
     public class InvalidCharacterExcpetion : Exception
     {
@@ -20,7 +20,7 @@ namespace MorseCodeLibrary.Exceptions
         }
 
         /// <summary>
-        /// Gets or sets the character that was not invalid/recognised.
+        /// Gets or sets the character that was not invalid/recognized.
         /// </summary>
         public string Character { get; set; }
 
