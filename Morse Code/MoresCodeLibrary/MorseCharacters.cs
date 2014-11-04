@@ -2,7 +2,7 @@
 // <copyright file="MorseCharacters.cs"> This code is protected under the MIT License. </copyright>
 using System.Collections.Generic;
 
-namespace MoresCodeLibrary
+namespace MorseCodeLibrary
 {
     /// <summary>
     /// The static class containing a dictionary of all morse code characters.

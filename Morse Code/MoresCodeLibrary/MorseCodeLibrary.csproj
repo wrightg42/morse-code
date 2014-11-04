@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Conversions\ConvertToMorse.cs" />
     <Compile Include="Exceptions\InvalidCharacterExcpetion.cs" />
     <Compile Include="MorseCharacters.cs" />
     <Compile Include="PlayMorse.cs" />

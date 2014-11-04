@@ -2,7 +2,7 @@
 // <copyright file="InvalidCharacterExcpetion.cs"> This code is protected under the MIT License. </copyright>
 using System;
 
-namespace MoresCodeLibrary.Exceptions
+namespace MorseCodeLibrary.Exceptions
 {
     /// <summary>
     /// An exception for invalid/unrecognised characters being used.

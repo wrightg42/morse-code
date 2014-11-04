@@ -48,9 +48,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MoresCodeLibrary\MoresCodeLibrary.csproj">
+    <ProjectReference Include="..\MoresCodeLibrary\MorseCodeLibrary.csproj">
       <Project>{47b19f43-1d30-48d1-8d66-5bc93812b06f}</Project>
-      <Name>MoresCodeLibrary</Name>
+      <Name>MorseCodeLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

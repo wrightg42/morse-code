@@ -1,7 +1,7 @@
 ﻿// Program.cs
 // <copyright file="Program.cs"> This code is protected under the MIT License. </copyright>
 using System;
-using MoresCodeLibrary;
+using MorseCodeLibrary;
 
 namespace MorseCode
 {
@@ -11,7 +11,7 @@ namespace MorseCode
         {
             if (PlayMorse.ValidMessage("sos. Testing 123!"))
             {
-                PlayMorse.PlayMessage("sos. Testing 123!");
+                PlayMorse.PlayMessage("sos♂. Testing 123!");
             }
         }
     }

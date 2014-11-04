@@ -3,9 +3,9 @@
 using System;
 using System.Collections.Generic;
 using System.Threading;
-using MoresCodeLibrary.Exceptions;
+using MorseCodeLibrary.Exceptions;
 
-namespace MoresCodeLibrary
+namespace MorseCodeLibrary
 {
     /// <summary>
     /// The static class containing methods to play morse code.
