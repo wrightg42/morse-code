@@ -19,7 +19,7 @@ namespace MorseCodeLibrary.Conversions
             message = message.ToUpper();
 
             // Return null if the message is not valid
-            if (!PlayMorse.ValidMessage(message))
+            if (!Validation.ValidMessage(message))
             {
                 return null;
             }
