@@ -1,4 +1,6 @@
-﻿using System.Reflection;
+﻿// AssemblyInfo.cs
+// <copyright file="AssemblyInfo.cs"> This code is protected under the MIT License. </copyright>
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
