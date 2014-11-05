@@ -17,10 +17,12 @@ namespace MorseCode
         /// <param name="args"> Arguments to be compiled with. </param>
         public static void Main(string[] args)
         {
-            if (Validation.ValidMessage("sos. Testing 123!"))
+            string morseMessage = ConvertToMorse.Convert("sos. Testing 123!");
+            if (Validation.ValidMessage(morseMessage, true))
             {
-                Console.WriteLine(ConvertToMorse.Convert("sos. Testing 123!"));
-                PlayMorse.PlayMessage(ConvertToMorse.Convert("sos. Testing 123!"), false);
+                Console.WriteLine(morseMessage);
+                Console.WriteLine(ConvertFromMorse.Convert(morseMessage));
+                PlayMorse.PlayMessage(morseMessage);
             }
         }
     }
