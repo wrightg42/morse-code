@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using MorseCodeLibrary.Conversions;
-using MorseCodeLibrary.Exceptions;
 
 namespace MorseCodeLibrary
 {
@@ -29,82 +28,43 @@ namespace MorseCodeLibrary
         /// <param name="message"> The message. </param>
         /// <param name="isChars"> Whether the message is letters or in morse form. </param>
         /// <param name="dotLength"> The length of one dot in milliseconds. </param>
-        public static void PlayMessage(string message, bool isChars = true, int dotLength = 90)
+        public static void PlayMessage(string message, bool isChars = false, int dotLength = 90)
         {
             // Set the dotlength
             DotLength = dotLength;
 
-            // Make all letters upper case so that the letters are recognisable keys
-            message = message.ToUpper();
-
+            // If the message is in characters convert it to morse code
             if (isChars)
             {
-                // Play each word in the message
-                foreach (string word in message.Split(' '))
+                message = ConvertToMorse.Convert(message);
+
+                // Don't play if the message was invalid
+                if (message == null)
                 {
-                    PlayWord(word, isChars);
+                    return;
                 }
             }
-            else
+
+            // Play each set of dots and dashes forming a word
+            foreach (string word in message.Split(new char[] { '\\', '|', '/' }, StringSplitOptions.RemoveEmptyEntries))
             {
-                // Play each set of dots and dashes forming a word
-                foreach (string word in message.Split(new char[] { '\\', '|', '/' }, StringSplitOptions.RemoveEmptyEntries))
-                {
-                    PlayWord(word, isChars);
-                }
+                PlayWord(word);
             }
         }
 
         /// <summary>
         /// Plays a word.
         /// </summary>
-        /// <param name="word"> The word. </param>
-        /// <param name="isChars"> Whether the word is letters or in morse form. </param>
-        public static void PlayWord(string word, bool isChars = true)
+        /// <param name="word"> the word to play in morse form. </param>
+        public static void PlayWord(string word)
         {
-            if (isChars)
+            // Play each character in the word
+            foreach (string charSet in word.Split(' '))
             {
-                // If the word is in character form play each letter
-                foreach (char c in word)
-                {
-                    PlayCharacter(c);
-                }
-            }
-            else
-            {
-                // If the word is in morse form play each section splitted by spaces
-                foreach (string charSet in word.Split(' '))
-                {
-                    PlayCharacter(charSet);
-                }
+                PlayCharacter(charSet);
             }
 
             WordGap();
-        }
-
-        /// <summary>
-        /// Plays a character. 
-        /// </summary>
-        /// <param name="c"> The character to play. </param>
-        public static void PlayCharacter(char c)
-        {
-            // Make sure the character is a registered morse character
-            if (MorseCharacters.MorseCharacterValues.ContainsKey(c))
-            {
-                // Get the dash values for each part of the morse character and play them
-                bool[] dashes = MorseCharacters.MorseCharacterValues[c];
-                foreach (bool dash in dashes)
-                {
-                    PlaySound(dash);
-                }
-
-                LetterGap();
-            }
-            else
-            {
-                // Throw an invalid character excpetion if the character was not recognised
-                throw new InvalidCharacterExcpetion(c.ToString(), false);                     
-            }
         }
 
         /// <summary>
@@ -113,29 +73,20 @@ namespace MorseCodeLibrary
         /// <param name="c"> The character to play in morse form. </param>
         public static void PlayCharacter(string c)
         {
-            // Validate the morse code
-            if (Validation.ValidMorseFormLetter(c))
+            // Play each morse value from the string of dots and dashes
+            foreach (char dashVal in c)
             {
-                // Play each morse value from the string of dots and dashes
-                foreach (char dashVal in c)
+                if (dashVal == '.')
                 {
-                    if (dashVal == '.')
-                    {
-                        PlaySound(false);
-                    }
-                    else if (dashVal == '-')
-                    {
-                        PlaySound(true);
-                    }
+                    PlaySound(false);
                 }
+                else if (dashVal == '-')
+                {
+                    PlaySound(true);
+                }
+            }
 
-                LetterGap();
-            }
-            else
-            {
-                // Throw an invalid character excpetion if the character was not recognised
-                throw new InvalidCharacterExcpetion(c, true);
-            }
+            LetterGap();
         }
 
         /// <summary>
@@ -163,7 +114,7 @@ namespace MorseCodeLibrary
         {
             Thread.Sleep(DotLength);
         }
-        
+
         /// <summary>
         /// Stops the thread for the gap between letters.
         /// </summary>

@@ -19,7 +19,7 @@ namespace MorseCodeLibrary.Conversions
             message = message.ToUpper();
 
             // Return null if the message is not valid
-            if (!Validation.ValidMessage(message))
+            if (!Validation.ValidEnglish(message))
             {
                 return null;
             }
@@ -47,18 +47,7 @@ namespace MorseCodeLibrary.Conversions
                             res += ' ';
                         }
 
-                        // Add each dot or dash that makes up a character
-                        foreach (bool b in MorseCharacters.MorseCharacterValues[c])
-                        {
-                            if (b)
-                            {
-                                res += '-';
-                            }
-                            else
-                            {
-                                res += '.';
-                            }
-                        }
+                        res += MorseCharacters.MorseCharacterValues[c];
                     }
 
                     // Add the word gap signifier
