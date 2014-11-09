@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MorseCodeLibrary.Conversions;
 
 namespace MorseCode
 {
@@ -76,6 +77,44 @@ namespace MorseCode
                 this.Morse.SelectionStart = selectIndex - 1;
                 SystemSounds.Beep.Play();
             }
+        }
+
+        /// <summary>
+        /// Translates the English message to a morse message.
+        /// </summary>
+        /// <param name="sender"> What raised the event. </param>
+        /// <param name="e"> The event arguments. </param>
+        private void TransToMorse_Click(object sender, RoutedEventArgs e)
+        {
+            // Only translate if the english textbox has content
+            if (this.English.Text != string.Empty)
+            {
+                this.Morse.Text = ConvertToMorse.Convert(this.English.Text);
+            }
+        }
+
+        /// <summary>
+        /// Translates the morse message to a english message.
+        /// </summary>
+        /// <param name="sender"> What raised the event. </param>
+        /// <param name="e"> The event arguments. </param>
+        private void TransToEng_Click(object sender, RoutedEventArgs e)
+        {
+            // Only translate if the morse textbox has content
+            if (this.Morse.Text != string.Empty)
+            {
+                this.English.Text = ConvertFromMorse.Convert(this.Morse.Text);
+            }
+        }
+        
+        /// <summary>
+        /// Plays the inputted message.
+        /// </summary>
+        /// <param name="sender"> What raised the event. </param>
+        /// <param name="e"> The event arguments. </param>
+        private void Play_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

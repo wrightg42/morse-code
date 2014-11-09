@@ -5,5 +5,8 @@
     <Grid>
         <TextBox x:Name="English" Height="100" TextWrapping="Wrap" VerticalAlignment="Top" Margin="10,10,10,0" TextChanged="English_TextChanged"/>
         <TextBox x:Name="Morse" Height="100" TextWrapping="Wrap" VerticalAlignment="Bottom" Margin="10,0,10,10" TextChanged="Morse_TextChanged"/>
+        <Button x:Name="TransToMorse" Content="Translate to Morse" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10, 120, 0, 0" Width="125" Click="TransToMorse_Click"/>
+        <Button x:Name="TransToEng" Content="Translate to English" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10, 150, 0, 0" Width="125" Click="TransToEng_Click"/>
+        <Button x:Name="Play" Content="Play Message" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10, 180, 0, 0" Width="100" Click="Play_Click"/>
     </Grid>
 </Window>
