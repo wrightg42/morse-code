@@ -28,7 +28,7 @@ namespace MorseCodeLibrary.Conversions
 
             // Copy each character into the result string
             string res = string.Empty;
-            foreach (string word in message.Split(new char[] { '\\', '|', '/' }, StringSplitOptions.RemoveEmptyEntries))
+            foreach (string word in message.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries))
             {
                 foreach (string letter in word.Split(' '))
                 {

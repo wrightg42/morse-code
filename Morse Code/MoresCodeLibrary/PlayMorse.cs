@@ -46,7 +46,7 @@ namespace MorseCodeLibrary
             }
 
             // Play each set of dots and dashes forming a word
-            foreach (string word in message.Split(new char[] { '\\', '|', '/' }, StringSplitOptions.RemoveEmptyEntries))
+            foreach (string word in message.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries))
             {
                 PlayWord(word);
             }
