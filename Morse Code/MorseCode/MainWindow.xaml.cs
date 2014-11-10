@@ -2,9 +2,11 @@
 // <copyright file="MainWindow.xaml.cs"> This code is protected under the MIT License. </copyright>
 using System.Media;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using MorseCodeLibrary.Conversions;
+using MorseCodeLibrary;
 
 namespace MorseCode
 {
@@ -20,6 +22,11 @@ namespace MorseCode
         {
             this.InitializeComponent();
         }
+
+        /// <summary>
+        /// Gets or sets the thread for playing morse code.
+        /// </summary>
+        private Thread PlayThread { get; set; }
 
         /// <summary>
         /// Makes sure that the english text box contains only recognized characters.
@@ -102,7 +109,22 @@ namespace MorseCode
         /// <param name="e"> The event arguments. </param>
         private void Play_Click(object sender, RoutedEventArgs e)
         {
-            
+            // Abort playing the previous string
+            if (this.PlayThread != null)
+            { 
+                this.PlayThread.Abort();
+            }
+
+            // Get the text string
+            string morseText = this.Morse.Text;
+            if (morseText == string.Empty)
+            {
+                morseText = ConvertToMorse.Convert(this.English.Text);
+            }
+
+            // Play the message
+            this.PlayThread = new Thread(() => PlayMorse.PlayMessage(morseText));
+            this.PlayThread.Start();
         }
     }
 }
