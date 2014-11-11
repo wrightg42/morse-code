@@ -1,12 +1,19 @@
 ﻿<Window x:Class="MorseCode.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Morse Code" MinHeight="350" MinWidth="550">
+        Title="Morse Code" MinHeight="250" MinWidth="400" Height="400" Width="550">
     <Grid>
-        <TextBox x:Name="English" Height="100" TextWrapping="Wrap" VerticalAlignment="Top" Margin="10,10,10,0" TextChanged="English_TextChanged"/>
-        <TextBox x:Name="Morse" Height="100" TextWrapping="Wrap" VerticalAlignment="Bottom" Margin="10,0,10,10" TextChanged="Morse_TextChanged"/>
-        <Button x:Name="TransToMorse" Content="Translate to Morse" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10, 120, 0, 0" Width="125" Click="TransToMorse_Click"/>
-        <Button x:Name="TransToEng" Content="Translate to English" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10, 150, 0, 0" Width="125" Click="TransToEng_Click"/>
-        <Button x:Name="Play" Content="Play Message" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10, 180, 0, 0" Width="100" Click="Play_Click"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label x:Name="EnglishLabel" Margin="5,5,0,0">English Message:</Label>
+        <TextBox x:Name="English" TextWrapping="Wrap" Margin="10,30,10,5" TextChanged="English_TextChanged"/>
+        <Label x:Name="MorseLabel" Grid.Row="2" Margin="5,5,0,0">Morse Code Message:</Label>
+        <TextBox x:Name="Morse" Grid.Row="2" TextWrapping="Wrap" Margin="10,30,10,10" TextChanged="Morse_TextChanged"/>
+        <Button x:Name="TransToMorse" Grid.Row="1" Content="Translate to Morse" HorizontalAlignment="Left" Width="125" Margin="10,5,0,5" Click="TransToMorse_Click"/>
+        <Button x:Name="TransToEng" Grid.Row="1" Content="Translate to English" HorizontalAlignment="Right" Width="125" Margin="0,5,10,5" Click="TransToEng_Click"/>
+        <Button x:Name="Play" Grid.Row="1" Content="Play Message" HorizontalAlignment="Center" Width="100" Margin="0,5,0,5" Click="Play_Click"/>
     </Grid>
 </Window>
