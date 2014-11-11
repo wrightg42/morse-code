@@ -11,7 +11,8 @@
         <Label x:Name="EnglishLabel" Margin="5,5,0,0">English Message:</Label>
         <TextBox x:Name="English" TextWrapping="Wrap" Margin="10,30,10,5" TextChanged="English_TextChanged"/>
         <Label x:Name="MorseLabel" Grid.Row="2" Margin="5,5,0,0">Morse Code Message:</Label>
-        <TextBox x:Name="Morse" Grid.Row="2" TextWrapping="Wrap" Margin="10,30,10,10" TextChanged="Morse_TextChanged"/>
+        <TextBox x:Name="Morse" Grid.Row="2" TextWrapping="Wrap" Margin="10,30,10,25" TextChanged="Morse_TextChanged"/>
+        <Label x:Name="Notes" Grid.Row="2" VerticalAlignment="Bottom" Margin="5,0,0,0">A space represents end of character. A | represents a space.</Label>
         <Button x:Name="TransToMorse" Grid.Row="1" Content="Translate to Morse" HorizontalAlignment="Left" Width="125" Margin="10,5,0,5" Click="TransToMorse_Click"/>
         <Button x:Name="TransToEng" Grid.Row="1" Content="Translate to English" HorizontalAlignment="Right" Width="125" Margin="0,5,10,5" Click="TransToEng_Click"/>
         <Button x:Name="Play" Grid.Row="1" Content="Play Message" HorizontalAlignment="Center" Width="100" Margin="0,5,0,5" Click="Play_Click"/>
