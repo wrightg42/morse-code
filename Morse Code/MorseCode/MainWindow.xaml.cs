@@ -5,8 +5,8 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using MorseCodeLibrary.Conversions;
 using MorseCodeLibrary;
+using MorseCodeLibrary.Conversions;
 
 namespace MorseCode
 {
