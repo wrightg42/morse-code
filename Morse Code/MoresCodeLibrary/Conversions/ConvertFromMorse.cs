@@ -20,12 +20,6 @@ namespace MorseCodeLibrary.Conversions
         /// <returns> The english of the message. </returns>
         public static string Convert(string message)
         {
-            // Only convert if it is valid morse
-            if (!Validation.ValidMorse(message))
-            {
-                return null;
-            }
-
             // Copy each character into the result string
             string res = string.Empty;
             foreach (string word in message.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries))
@@ -56,7 +50,8 @@ namespace MorseCodeLibrary.Conversions
                 }
             }
 
-            return new char();
+            // Make unknown characters questions marks
+            return '?';
         }
     }
 }

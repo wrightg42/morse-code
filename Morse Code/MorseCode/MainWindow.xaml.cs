@@ -99,6 +99,9 @@ namespace MorseCode
             if (this.Morse.Text != string.Empty)
             {
                 this.English.Text = ConvertFromMorse.Convert(this.Morse.Text);
+
+                // Translate back to morse again so that unknown characters become question marks
+                this.TransToMorse_Click(sender, e);
             }
         }
         
